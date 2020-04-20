@@ -1,0 +1,158 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none !important;
+	list-style: none;
+	font-family: "SF Display";
+	
+}
+
+/*FONT*/
+@font-face {
+  font-family: "SF Display";
+  font-weight: 400;
+  src: url("https://sf.abarba.me/SF-UI-Display-Regular.otf");
+}
+@font-face {
+	font-family: "Sultan Nahia W20";
+	src:url("../Fonts/Sultan Nahia W20.ttf") format("truetype");
+}
+
+/* SIDEBAR */
+.sidebar{
+	min-width: 220px;
+	background: #2D2F3E;
+	color: #868895;
+	position: fixed;
+	z-index: 99;
+	height: 100%;
+}
+.bborder{
+	border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.category>ul>li>a{
+    font-family:"Sultan Nahia W20" !important;
+    font-size: 1em;
+}
+.category>ul>p{
+    font-size: .7em;
+    font-weight: 300;
+}
+
+/* NAVBAR - RIGHT-SIDE */
+.right-side{
+	width: 1315px;
+	padding-top: 60px;
+	margin-left: 220px;
+}
+.nav{
+	width: 86%;
+	height: 60px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.05);
+	position: fixed;
+	z-index: 99;
+	top: 0;
+}
+.user{
+	max-width: 30px;
+	min-width: 30px;
+	max-height: 30px;
+	border-radius: 50%;
+}
+#search{
+	border: none;
+	outline: none;
+}
+
+/*PRODUCT*/
+.product{
+	max-width: 196.5px;
+	height: 300px;
+	cursor: pointer;
+	border-radius: 3px;
+	box-shadow: 0 0 1px rgba(0,0,0,.5);
+}
+.product-img{
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	border-radius: 5px 5px 3px 3px !important;
+}
+.product-img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.product-img i{
+	position: absolute;
+	right: 4%;
+	top: 6%;
+}
+.deal{
+	padding: 2px 10px;
+	font-size: .8em;
+	color: #fff;
+	text-align: center;
+	position: absolute;
+	top: 6%;
+	left: 7%;
+	border-radius: 0 3px 3px 0;
+}
+
+/*Responsive Search*/
+.resp-search{
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
+.ssearch {
+	position: absolute;
+	right: 1%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+}
+.ssearch:hover {
+	cursor: pointer;
+}
+.resp-search input {
+    width: 200px !important;
+    height: 30px;
+    outline: none;
+    border: none;
+    color: #000;
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    transition: all 1s;
+    opacity: 0;
+    z-index: 5;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+.resp-search input:hover {
+  cursor: pointer;
+}
+.resp-search input:focus {
+  width: 200px;
+  opacity: 1;
+  cursor: text;
+}
+
+
+/*MENU - PANEL*/
+.menu-panel{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+.menu-panel>ul>li{
+	font-size: 1.5em;
+	opacity: .4;
+}
+.active,.menu-panel>ul>li:hover{
+	opacity: 1 !important;
+}
