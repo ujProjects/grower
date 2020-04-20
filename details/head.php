@@ -7,5 +7,6 @@
 	<link rel="stylesheet" href="fontawesome-free-5.13.0-web/css/all.min.css">
 	<link rel="stylesheet" href="OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="icofont/icofont.min.css">
+	<link rel="stylesheet" href="/css/mystyle.css">
 	<title>Document</title>
 </head>

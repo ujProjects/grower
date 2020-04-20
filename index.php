@@ -2,6 +2,9 @@
 <?php
 include 'php/db.php';
 include 'php/sql.php';
+
+
+$page = "home";
 ?>
 
 <html lang="en">
@@ -30,7 +33,7 @@ include 'php/sql.php';
 
 
 						<div class="col-xl-2 col-lg-3 col-sm-4 col-6">
-							<div href="products.php/?id=<?=$product['id']?>" class="product mt-2 pt-1 mb-3 pb-2 bg-white">
+							<div href="product.php/?id=<?=$product['id']?>" class="product mt-2 pt-1 mb-3 pb-2 bg-white">
 								<div class="product-img border-bottom mx-1 mb-3 d-flex flex-column justify-content-center">
 									<img src="images/<?=$product['thumbnail']?>" alt="" class="w-100">
 									<a href="" class="wish"><i class="far fa-heart text-muted"></i></a>
@@ -58,15 +61,7 @@ include 'php/sql.php';
 	</div>
 
 <!-- MENU - PANEL -->
-	<div class="menu-panel bg-white border-top d-none">
-		<ul class="d-flex justify-content-between py-2 m-0 px-4">
-			<li class="active"><a href=""><i class="icofont-home text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-list text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-plus text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-heart text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-user text-dark"></i></a></li>
-		</ul>
-	</div>
+<?php include "details/mobileNav.php" ?>
 
 <?php include 'details/scripts.php'; ?>
 </body>

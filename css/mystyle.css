@@ -1,0 +1,10 @@
+.category .active{
+    color: #28a745!important;
+}
+.category-title:hover{
+    color: #ccd3d9!important;
+}
+.radius-100{
+    border-radius: 100%;
+    overflow: hidden;
+}
