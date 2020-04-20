@@ -1,5 +1,4 @@
 $(".product").on('click', function () {
-	let link = $(this).attr('href')
-
-	window.location.replace(link);
+	let link = $(this).attr('href');
+	location.href=link;
 });
