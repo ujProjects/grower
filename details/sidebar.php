@@ -2,7 +2,8 @@
   <div class="sidebar px-2 py-3">
     <div class="bborder mx-3 mb-3">
       <h4 class="mb-3">
-        <a href="" class="text-white">Logo</a>
+
+        <a href="http://grower.uz" class="text-white">Logo</a>
       </h4>
     </div>
     <div class="category px-3">
@@ -67,5 +68,5 @@
     </nav>
     <!-- LOGO -->
 		<div class="logo d-none">
-			<h2 class="mt-4"><a href="" class="font-weight-bold text-success ml-4">Logo</a></h2>
+			<h2 class="mt-4"><a href="http://grower.uz" class="font-weight-bold text-success ml-4">Logo</a></h2>
 		</div>

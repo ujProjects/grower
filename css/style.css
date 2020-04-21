@@ -4,8 +4,13 @@
 	box-sizing: border-box;
 	text-decoration: none !important;
 	list-style: none;
+<<<<<<< HEAD
 	font-family: "Sofia Pro";
 	
+=======
+	font-family: "SF Display";
+
+>>>>>>> 40f9573aa086db96a73009a45e63f6e1387f0237
 }
 
 /*FONT*/
@@ -175,4 +180,13 @@
 }
 .active,.menu-panel>ul>li:hover{
 	opacity: 1 !important;
+}
+
+
+.greyToBlack{
+	color: grey;
+}
+
+.greyToBlack:hover{
+	color: black;
 }

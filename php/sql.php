@@ -17,4 +17,4 @@ $products = $dbuser->query($productsSelector);
 $mainCategoriesSelector = "SELECT * FROM categories where parent = 0";
 $mainCategories = query($mainCategoriesSelector);
 
- ?>
+?>
