@@ -4,19 +4,38 @@
 	box-sizing: border-box;
 	text-decoration: none !important;
 	list-style: none;
-	font-family: "SF Display";
+	font-family: "Sofia Pro";
 	
 }
 
 /*FONT*/
 @font-face {
-  font-family: "SF Display";
+  font-family: "Sofia Pro";
   font-weight: 400;
-  src: url("https://sf.abarba.me/SF-UI-Display-Regular.otf");
+  src: url("../Fonts/SofiaProRegular.ttf");
+}
+@font-face {
+  font-family: "Sofia Pro";
+  font-weight: 600;
+  src: url("../Fonts/SofiaPro-Bold.ttf");
+}
+@font-face {
+  font-family: "Sofia Pro";
+  font-weight: 200;
+  src: url("../Fonts/sofiapro-light.otf");
+}
+@font-face {
+  font-family: "Sofia Pro";
+  font-weight: 800;
+  src: url("../Fonts/Gilroy-ExtraBold.otf");
 }
 @font-face {
 	font-family: "Sultan Nahia W20";
 	src:url("../Fonts/Sultan Nahia W20.ttf") format("truetype");
+}
+.fw-600{
+	font-family: "Sofia Pro";
+	font-size: 600;	
 }
 
 /* SIDEBAR */
@@ -61,6 +80,7 @@
 	border-radius: 50%;
 }
 #search{
+	width: 96.5%;
 	border: none;
 	outline: none;
 }

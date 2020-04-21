@@ -17,12 +17,10 @@
 	}
 	.right-side{
 		margin-left: 0;
+		padding-top: 0;
 	}
 	.nav{
 		display: none;
-	}
-	.right-side{
-		padding-top: 0;
 	}
 	.ssearch{
 		display: inline-block !important;
