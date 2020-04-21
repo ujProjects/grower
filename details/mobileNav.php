@@ -6,11 +6,7 @@
         <li><a href=""><i class="icofont-heart text-dark"></i></a></li>
 
 
-        <?php if ($_SESSION[registred] == true): ?>
-            <li><a href="account.php"><i class="icofont-user text-dark"></i></a></li>
-        <?php else: ?>
-            <li><a href="register.php"><i class="icofont-user text-dark"></i></a></li>
-        <?php endif ?>
+
 
 
 

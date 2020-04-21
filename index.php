@@ -55,13 +55,8 @@ $page = "home";
 	</div>
 
 <!-- Responsive Search -->
-	<div class="resp-search d-flex align-items-center">
-		<input type="text" placeholder="Search...">
-		<div class="ssearch"><i class="fas fa-search text-muted"></i></div>
-	</div>
-
 <!-- MENU - PANEL -->
-<?php include "details/mobileNav.php" ?>
+<?php include "details/mobile.php" ?>
 
 <?php include 'details/scripts.php'; ?>
 </body>
