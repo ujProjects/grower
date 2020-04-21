@@ -99,28 +99,31 @@ include 'details/head.php';
 						</div>
 					</div>
 					<div class="col-lg-9">
-						<form class="py-5">
+						<form class="py-5" action="verfications/addProduct.php" method="POST">
+
 							<div class="mb-3">
 								<label for="title"><h4 class="fw-600 m-0">Title</h4></label>
-								<input type="text" id="title" class="form-control">
+								<input type="text" id="title" class="form-control" name="title">
 							</div>
 							<div class="row">
 								<div class="col-lg-6 mb-3">
 									<label for="price"><h4 class="fw-600 m-0">Price</h4></label>
-									<input type="text" id="price" class="form-control" placeholder="$">
+									<input type="text" id="price" class="form-control" value="$" name="price">
+
 								</div>
 								<div class="col-lg-6 mb-3">
 									<label for="category"><h4 class="fw-600 m-0">Category</h4></label>
-									<select name="" class="form-control" id="category">
-										<option value="Not chosen">Not chosen</option>
-										<option value="Food">Food</option>
-										<option value="Fruit">Fruit</option>
+									<select class="form-control" id="category" name="category">>
+										<option value="0">Not chosen</option>
+										<option value="1">Food</option>
+										<option value="2">Fruit</option>
 									</select>
 								</div>
 							</div>
+
 							<div class="mb-3">
 								<label for="description"><h4 class="fw-600 m-0">Description</h4></label>
-								<textarea name="" id="description" style="resize: none;" class="form-control" rows="5"></textarea>
+								<textarea name="description" id="description" style="resize: none;" class="form-control" rows="5"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-md-3 mb-3">
@@ -128,7 +131,7 @@ include 'details/head.php';
 									<div class="d-flex">
 										<div class="mr-4">
 											<div class="pretty p-svg p-curve">
-										        <input type="checkbox" checked>
+										        <input type="checkbox" name="is_color" checked>
 										        <div class="state p-success">
 										            <svg class="svg svg-icon" viewBox="0 0 20 20">
 										                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
@@ -139,7 +142,7 @@ include 'details/head.php';
 									    </div>
 										<div>
 											<div class="pretty p-svg p-curve">
-										        <input type="checkbox">
+										        <input type="checkbox" name="is_size">
 										        <div class="state p-success">
 										            <svg class="svg svg-icon" viewBox="0 0 20 20">
 										                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
@@ -156,7 +159,7 @@ include 'details/head.php';
 							</div>
 							<div class="row m-0 justify-content-end pt-3 mt-4">
 								<button class="col-md-2 col-5 py-1 btn">Cancel</button>
-								<button class="col-md-3 col-7 py-1 btn btn-success">Post</button>
+								<button type="submit" class="col-md-3 col-7 py-1 btn btn-success">Post</button>
 							</div>
 						</form>
 					</div>
