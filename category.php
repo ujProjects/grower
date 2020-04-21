@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+
 include 'php/db.php';
 include 'php/sql.php';
 
@@ -80,7 +81,7 @@ $page = "category";
 	</div>
 
 <!-- MENU - PANEL -->
-<?php include "details/mobileNav.php" ?>
+<?php include "details/mobile.php" ?>
 
 <?php include 'details/scripts.php'; ?>
 </body>

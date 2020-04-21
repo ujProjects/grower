@@ -10,7 +10,7 @@
 
         <?php $active = "class='active'" ?>
 		<li <?php if($page == 'home'){echo $active;} ?>><a href="http://grower.uz"><i class="icofont-home text-dark"></i></a></li>
-		<li <?php if($page == 'selectCatgory'){echo $active;} ?>><a href="http://grower.uz/selectCategory.php"><i class="icofont-list text-dark"></i></a></li>
+		<li <?php if($page == 'selectCatgory' or $page == 'category'){echo $active;} ?>><a href="http://grower.uz/selectCategory.php"><i class="icofont-list text-dark"></i></a></li>
 		<li <?php if($page == 'addProduct'){echo $active;} ?>><a href="http://grower.uz/addProduct.php"><i class="icofont-plus text-dark"></i></a></li>
 		<li <?php if($page == 'wishlist'){echo $active;} ?>><a href="http://grower.uz/wishlist"><i class="icofont-heart text-dark"></i></a></li>
         <?php if ($_SESSION[registred] == true): ?>
