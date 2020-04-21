@@ -60,12 +60,13 @@ include 'details/head.php';
 				</ul>
 			</nav>
 
-<!-- LOGO -->
+			<!-- LOGO -->
 			<div class="logo d-none">
 				<h2 class="mt-4"><a href="" class="font-weight-bold text-success ml-4">Logo</a></h2>
 			</div>
 
-<!-- LOAD-PAGE -->
+
+        	<!-- LOAD-PAGE -->
 			<section class="load-page pt-4 pb-5 container">
 				<h1 class="text-success font-weight-bold">Add Product</h1>
 				<div class="row">
@@ -99,31 +100,28 @@ include 'details/head.php';
 						</div>
 					</div>
 					<div class="col-lg-9">
-						<form class="py-5" action="verfications/addProduct.php" method="POST">
-
+						<form class="py-5">
 							<div class="mb-3">
 								<label for="title"><h4 class="fw-600 m-0">Title</h4></label>
-								<input type="text" id="title" class="form-control" name="title">
+								<input type="text" id="title" class="form-control">
 							</div>
 							<div class="row">
 								<div class="col-lg-6 mb-3">
 									<label for="price"><h4 class="fw-600 m-0">Price</h4></label>
-									<input type="text" id="price" class="form-control" value="$" name="price">
-
+									<input type="text" id="price" class="form-control" placeholder="$">
 								</div>
 								<div class="col-lg-6 mb-3">
 									<label for="category"><h4 class="fw-600 m-0">Category</h4></label>
-									<select class="form-control" id="category" name="category">>
-										<option value="0">Not chosen</option>
-										<option value="1">Food</option>
-										<option value="2">Fruit</option>
+									<select name="" class="form-control" id="category">
+										<option value="Not chosen">Not chosen</option>
+										<option value="Food">Food</option>
+										<option value="Fruit">Fruit</option>
 									</select>
 								</div>
 							</div>
-
 							<div class="mb-3">
 								<label for="description"><h4 class="fw-600 m-0">Description</h4></label>
-								<textarea name="description" id="description" style="resize: none;" class="form-control" rows="5"></textarea>
+								<textarea name="" id="description" style="resize: none;" class="form-control" rows="5"></textarea>
 							</div>
 							<div class="row">
 								<div class="col-md-3 mb-3">
@@ -131,7 +129,7 @@ include 'details/head.php';
 									<div class="d-flex">
 										<div class="mr-4">
 											<div class="pretty p-svg p-curve">
-										        <input type="checkbox" name="is_color" checked>
+										        <input type="checkbox" checked>
 										        <div class="state p-success">
 										            <svg class="svg svg-icon" viewBox="0 0 20 20">
 										                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
@@ -142,7 +140,7 @@ include 'details/head.php';
 									    </div>
 										<div>
 											<div class="pretty p-svg p-curve">
-										        <input type="checkbox" name="is_size">
+										        <input type="checkbox">
 										        <div class="state p-success">
 										            <svg class="svg svg-icon" viewBox="0 0 20 20">
 										                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
@@ -159,7 +157,7 @@ include 'details/head.php';
 							</div>
 							<div class="row m-0 justify-content-end pt-3 mt-4">
 								<button class="col-md-2 col-5 py-1 btn">Cancel</button>
-								<button type="submit" class="col-md-3 col-7 py-1 btn btn-success">Post</button>
+								<button class="col-md-3 col-7 py-1 btn btn-success">Post</button>
 							</div>
 						</form>
 					</div>
@@ -169,13 +167,13 @@ include 'details/head.php';
 	</div>
 
 
-<!-- Responsive Search -->
+	<!-- Responsive Search -->
 	<div class="resp-search d-flex align-items-center">
 		<input type="text" placeholder="Search...">
 		<div class="ssearch"><i class="fas fa-search text-muted"></i></div>
 	</div>
 
-<!-- MENU - PANEL -->
+	<!-- MENU - PANEL -->
 	<div class="menu-panel bg-white border-top d-none">
 		<ul class="d-flex justify-content-between py-2 m-0 px-4">
 			<li><a href=""><i class="icofont-home text-dark"></i></a></li>
