@@ -20,14 +20,20 @@ if ($_SESSION['registered'] == true) {
 				<form class="row px-sm-4 text-center" action="verfications/login.php" method="post">
 					<h4 class="font-weight-bold mx-sm-4 mb-4">Log in</h4>
 
+                    <div id="errorHandler" class="alert alert-danger w-100 d-none " role="alert">
+
+                    </div>
 					<input type="text" class="form-control mb-1" placeholder="Username or E-mail" name="username" id="username">
 					<input type="password" class="form-control mb-1" placeholder="Password" name="password" id="password">
 
-					<button type="submit" class="btn acc-create my-4 py-2 col-12">Log In</button>
+					<button type="button" class="btn acc-create my-4 py-2 col-12" id="loginBtn">Log In</button>
 					<p class="text-muted m-auto pt-4">Do'nt have an account? <a href="register.php">Register</a></p>
 				</form>
 			</div>
 		</div>
 	</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/mymain.js"></script>
 </body>
 </html>
