@@ -1,0 +1,15 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.product-price{
+	background: #E5F3EA;
+	font-weight: 600;
+}
+.product-main-img{
+	height: 280px;
+}
+.product-imgs{
+	height: 100px;
+}
