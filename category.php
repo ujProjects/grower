@@ -1,6 +1,5 @@
-<!DOCTYPE html>
 <?php
-
+ob_start();
 include 'php/db.php';
 include 'php/sql.php';
 

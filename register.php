@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+ob_start();
+session_start();
+if ($_SESSION['registered'] == true) {
+    header("Location: http://grower.uz/");
+}
+ ?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">

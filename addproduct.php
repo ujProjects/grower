@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -67,9 +68,15 @@ $page = "addProduct";
                     <div class="col-lg-6 mb-3">
                         <label for="category"><h4 class="fw-600 m-0">Category</h4></label>
                         <select name="category" class="form-control" id="category">
-                            <option value="0">Not chosen</option>
-                            <option value="1">Food</option>
-                            <option value="2">Fruit</option>
+							<option value="0">Not chosen</option>
+							<?php
+								$sql = "SELECT * from categories";
+								$categories = query($sql);
+								while ($category = $categories->fetch_array()):
+							?>
+
+                            <option value="<?=$category['id']?>"><?=$category['title']?></option>
+						<?php endwhile; ?>
                         </select>
                     </div>
                 </div>
