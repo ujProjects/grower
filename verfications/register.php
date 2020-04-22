@@ -1,16 +1,19 @@
 <?php
 session_start();
 
-include "../admin/db.php";
+include "../php/db.php";
 include "../helpers/functios.php";
 
 $username = htmlspecialchars($_POST['username']);
-$fullname = htmlspecialchars($_POST['fullname']);
+$fullname = htmlspecialchars($_POST['name']);
 $email =  htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 $password2 = htmlspecialchars($_POST['password_confirm']);
-
-
+$userType = htmlspecialchars($_POST['userType']);
+print_r($_POST);
+if (!isset($_POST['userType'])) {
+	die("Select your user type");
+}
 
 if (!validate_alphanumeric_underscore($username) or empty($username)) {
 	die("Error in your username");
@@ -27,6 +30,10 @@ if ($password !== $password2 or empty($password) or empty($password2)) {
 	die("Your passwords should be at least 8 characters");
 
 }
+if ($userType != "manafacture" and $userType != "market") {
+	die("Invalid usertype");
+}
+
 
 $password = sha1(md5(md5($password)));
 
@@ -36,6 +43,8 @@ $emailCheck = "SELECT * from users where email = '".$email."'";
 $userCount = mysqli_num_rows($dbuser->query($checkUser));
 $emailCount = mysqli_num_rows($dbuser->query($emailCheck));
 
+
+
 if ($userCount > 0) {
 	die("Username Taken");
 }
@@ -43,7 +52,16 @@ if ($emailCount > 0) {
 	die("Email Taken");
 }
 
-$insertUser = "INSERT INTO users (username, full_name, email, password) VALUES('".$username."', '".$fullname."', '".$email."', '".$password."')";
+
+
+if ($userType == "manafacture") {
+	$market = 0;
+}else{
+	$market = 1;
+}
+
+
+$insertUser = "INSERT INTO users (username, full_name, email, password, market) VALUES('".$username."', '".$fullname."', '".$email."', '".$password."', $market)";
 print $sql;
 $result = $dbuser->query($insertUser);
 if ($result) {
@@ -54,7 +72,5 @@ if ($result) {
 }else{
 	print "Server Problem";
 }
-
-
 
 ?>

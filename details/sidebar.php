@@ -41,9 +41,9 @@
         <li class="mx-4"><a href="addproduct.php"><i class="fas fa-plus text-muted"></i></a></li>
 
         <li class="pl-4 border-left">
-            <?php if ($_SESSION['registred'] == true): ?>
+            <?php if ($_SESSION['registered'] == true): ?>
                   <a href="http://grower.uz/account.php" class="text-muted d-flex align-items-center">
-                    Cindy Deitch
+                    <?= $_SESSION['meFullName']?>
                     <div class="border user mx-3">
                         <?php if ($userPhoto): ?>
                             <img src="images/avatars/<?=$userPhoto?>" class="w-100" alt="">
