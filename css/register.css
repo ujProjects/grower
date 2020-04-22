@@ -1,0 +1,51 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 1em;
+}
+body{
+	background: #E5F0FF;
+}
+.wrapper{
+	border-radius: 10px;
+}
+.acc-create{
+	background: #5199FF;
+	color: #fff !important;
+}
+.acc-create:hover{
+	background: #5188FF;
+}
+input[type="radio"]{
+	display: none;
+}
+.user1,.user2{
+	width: 100%;
+	height: 70px;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+	background-size: 130% !important;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.user1{
+	background: url(../images/Untitled-1.jpg);
+}
+.user2{
+	background: url(../images/Untitled-2rgb.jpg);
+}
+input[type="radio"]:checked + label{
+	border: 1px solid green !important;
+}
+
+@media screen and (max-width: 576px){
+	.user1{
+		background: url(../images/manafacturmob.jpg);
+		height: 60px;
+	}	
+	.user2{
+		background: url(../images/shopmob.jpg);
+		height: 60px;
+	}	
+}
