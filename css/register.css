@@ -18,7 +18,8 @@ body{
 	background: #5188FF;
 }
 input[type="radio"]{
-	display: none;
+	position: absolute;
+	left: -999px;
 }
 .user1,.user2{
 	width: 100%;
