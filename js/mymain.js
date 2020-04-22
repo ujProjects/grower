@@ -1,3 +1,8 @@
 $('input[type=file]').change(function () {
     console.log(this.files[0].mozFullPath);
 });
+
+
+goHome = function(){
+    console.log("salom");
+}

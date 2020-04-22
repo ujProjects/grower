@@ -1,6 +1,54 @@
 <?php
 include "../helpers/functios.php";
 include '../php/db.php';
+
+echo "<pre>";
+$res = validate_img($_FILES['thumbnail']);
+if($res['type'] != "success"){
+    die($res['message']);
+}else {
+    $thumbnail = $res['target'];
+}
+if ($_FILES['img1']) {
+    $res = validate_img($_FILES['img1']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 1 didn't uploaded";
+    }else {
+        $img1 = $res['target'];
+    }
+}
+if ($_FILES['img2']) {
+    $res = validate_img($_FILES['img2']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 2 didn't uploaded";
+    }else {
+        $img2 = $res['target'];
+    }
+}
+if ($_FILES['img3']) {
+
+    $res = validate_img($_FILES['img3']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 3 didn't uploaded";
+    }else {
+        $img3 = $res['target'];
+    }
+}
+if ($_FILES['img4']) {
+    $res = validate_img($_FILES['img4']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 4 didn't uploaded";
+    }else {
+        $img4 = $res['target'];
+    }
+}
+// print_r($_FILES);
+// print_r($_POST);
+
 $title = htmlspecialchars($_POST['title'], ENT_QUOTES );
 $price = htmlspecialchars($_POST['price'], ENT_QUOTES );
 $category = htmlspecialchars($_POST['category'], ENT_QUOTES );
@@ -34,7 +82,23 @@ if (!is_numeric($category)) {
     }
 }
 
+$_SESSION['id'] = 1;
+// echo "$thumbnail, $img1, $img2, $img3, $img4, $title, $price, $category, $description";
+$addProductSql = "INSERT INTO products(title, description, category_id, sellerId, thumbnail) VALUES('".$title."', '".$description."', $category, ".$_SESSION['id'].", '".$thumbnail."')";
+$resProduct = $dbuser->query($addProductSql);
+if ($resProduct == true) {
+    $product_id = $dbuser->insert_id;
+}else{
+    die("<script>window.location.href = 'http://grower.uz/error.php';</script>");
+}
 
+$addPricesSql = "INSERT INTO prices(product_id, currentPrice) VALUES($product_id, $price)";
+$resPrice = $dbuser->query($addPricesSql);
+
+
+if ($resProduct and $resPrice) {
+    die("<script>window.location.href = 'http://grower.uz/product.php?id=$product_id';</script>");
+}
 
 
 
