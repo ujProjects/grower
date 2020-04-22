@@ -68,6 +68,7 @@ if ($result) {
 	$_SESSION['registered'] = true;
 	$_SESSION['meFullName'] = $fullname;
 	$_SESSION['meUserName'] = $username;
+	$_SESSION['market'] = $market;
 	echo "<script>location.href='http://grower.uz/'</script>";
 }else{
 	print "Server Problem";

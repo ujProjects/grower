@@ -38,7 +38,21 @@
       </form>
       <ul class="d-flex col-md-4 align-items-center justify-content-end m-0">
         <!-- <li class="mr-2"><a href=""><i class="far fa-bell text-muted"></i></a></li> -->
-        <li class="mx-4"><a href="addproduct.php"><i class="fas fa-plus text-muted"></i></a></li>
+        <?php if ($_SESSION['registered']  != true): ?>
+            <li class="mx-4"><a href="register.php"><i class="fas fa-heart  text-muted"></i></a></li>
+            <li class="mx-4"><a href="register.php"><i class="fas fa-plus text-muted"></i></a></li>
+        <?php else: ?>
+            <li class="mx-4"><a href="wishlist.php"><i class="fas fa-heart  text-muted"></i></a></li>
+        <?php endif;?>
+
+
+
+
+        <?php if (isset($_SESSION['market']) and (int)$_SESSION['market']  === 0): ?>
+            <li class="mx-4"><a href="addproduct.php"><i class="fas fa-plus text-muted"></i></a></li>
+        <?php endif; ?>
+
+
 
         <li class="pl-4 border-left">
             <?php if ($_SESSION['registered'] == true): ?>
