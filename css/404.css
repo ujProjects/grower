@@ -1,0 +1,64 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none !important;
+	font-family: "Sofia Pro", sans-serif;
+}
+@font-face {
+  font-family: "Sofia Pro";
+  font-weight: 600;
+  src: url("../Fonts/SofiaPro-Bold.ttf");
+}
+.page-404{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 8%;
+}
+h1{
+	font-size: 15em !important;
+	background: url(https://www.key4biz.it/wp-content/uploads/2019/06/Smart-city-480x240.jpg);
+	background-position: center;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+.go-home{
+	background: #32AB98;
+	border-radius: 5px;
+}
+.go-home:hover{
+	background: #32A198;
+	border-radius: 5px;
+}
+.logo{
+	font-size: 2em;
+	position: absolute;
+	left: 5%;
+	top: 3%;
+}
+.round1,.round2{
+	position: absolute;
+	height: 50px;
+}
+.round1{
+	width: 100px;
+	background: lightgrey;
+	bottom: 0;
+	left: 16%;
+	border-radius: 50px 50px 0 0;
+}
+.round2{
+	width: 50px;
+	background: grey;
+	bottom: 10%;
+	left: -25px;
+	border-radius: 50%;
+}
+.square{
+	position: absolute;
+	border: 60px solid transparent;
+	border-right-color: #EDF3F3; 
+	right: 0;
+	bottom: 33%;
+}
