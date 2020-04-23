@@ -7,13 +7,21 @@
 	background: #E5F3EA;
 	font-weight: 600;
 }
-.product-main-img{
-	height: 280px;
+.product-main-img img,.product-imgs img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.product-main-img,.product-imgs{
+	background: #fff;
 	overflow: hidden;
+}
+.product-main-img{
+	height: 320px;
 }
 .product-imgs{
 	height: 70px;
-	overflow: hidden;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 3px;
 }
 .user-name{
 	padding: 5px 0 !important;
