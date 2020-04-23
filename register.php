@@ -39,7 +39,7 @@ if ($_SESSION['registered'] == true) {
 						<label class="custom-control-label" for="customCheck1"><span class="text-muted">I agree all statements in </span><a href="">Terms of service</a></label>
 					</div>
 					<button type="submit" class="btn acc-create my-4 py-2 col-12">Create account</button>
-					<p class="text-muted m-auto pt-4">Already have an account ?<a href="">Log in</a></p>
+					<p class="text-muted m-auto pt-4">Already have an account? <a href="">Log in</a></p>
 				</form>
 			</div>
 		</div>

@@ -12,7 +12,8 @@
 	overflow: hidden;
 }
 .product-imgs{
-	height: 100px;
+	height: 70px;
+	overflow: hidden;
 }
 .user-name{
 	padding: 5px 0 !important;
