@@ -1,5 +1,6 @@
-$("#loginBtn").on("click", function(){
+$("#loginBtn").on("click", loginChecker());
 
+function loginChecker(){
     var username = $("#username").val();
     var password = $("#password").val();
 
@@ -30,5 +31,5 @@ $("#loginBtn").on("click", function(){
                 $("#loginBtn").prop("disabled", false);
         }
     })
+
 }
-});
