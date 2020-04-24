@@ -49,6 +49,7 @@
 .also-product-img{
 	height: 250px;
 	overflow: hidden;
+	position: relative;
 }
 
 
