@@ -86,6 +86,7 @@
 								</div>
 								<div class="also-product-img border-bottom mb-2 d-flex align-items-center">
 									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
+									<a class="wish"><i class="fas fa-heart text-danger"></i></a>
 								</div>
 								<div class="also-product-info px-3">
 									<h6 class="font-weight-bold m-0">Product Name</h6>
@@ -102,6 +103,7 @@
 								</div>
 								<div class="also-product-img border-bottom mb-2 d-flex align-items-center">
 									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
+									<a class="wish"><i class="fas fa-heart text-danger"></i></a>
 								</div>
 								<div class="also-product-info px-3">
 									<h6 class="font-weight-bold m-0">Product Name</h6>
@@ -118,6 +120,7 @@
 								</div>
 								<div class="also-product-img border-bottom mb-2 d-flex align-items-center">
 									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
+									<a class="wish"><i class="fas fa-heart text-danger"></i></a>
 								</div>
 								<div class="also-product-info px-3">
 									<h6 class="font-weight-bold m-0">Product Name</h6>
@@ -134,6 +137,7 @@
 								</div>
 								<div class="also-product-img border-bottom mb-2 d-flex align-items-center">
 									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
+									<a class="wish"><i class="fas fa-heart text-danger"></i></a>
 								</div>
 								<div class="also-product-info px-3">
 									<h6 class="font-weight-bold m-0">Product Name</h6>
@@ -165,5 +169,10 @@
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+			$('.fas').on('click', function(){
+				$(this).parent('a').parent('div').parent('div').parent('.col-xl-3').remove();
+			});
+	</script>
 </body>
 </html>
