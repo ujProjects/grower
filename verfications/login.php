@@ -19,6 +19,7 @@ if ($userCount <= 0) {
 	$_SESSION['meFullName'] = $userDetails['full_name'];
 	$_SESSION['meUserName'] = $userDetails['username'];
     $_SESSION['market'] = $userDetails['market'];
+    $_SESSION['userId'] = $userDetails['id'];
 	echo "success";
 }
 

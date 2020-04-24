@@ -62,13 +62,16 @@ if ($userType == "manafacture") {
 
 
 $insertUser = "INSERT INTO users (username, full_name, email, password, market) VALUES('".$username."', '".$fullname."', '".$email."', '".$password."', $market)";
-print $sql;
 $result = $dbuser->query($insertUser);
+
 if ($result) {
+	$userID = $dbuser->insert_id;
 	$_SESSION['registered'] = true;
 	$_SESSION['meFullName'] = $fullname;
 	$_SESSION['meUserName'] = $username;
 	$_SESSION['market'] = $market;
+	$_SESSION['userId'] = $userID;
+
 	echo "<script>location.href='http://grower.uz/'</script>";
 }else{
 	print "Server Problem";

@@ -36,3 +36,33 @@ function loginChecker(){
 
     }
 }
+
+
+
+
+function addToWishlist(productId){
+    $.ajax({
+        url: 'verfications/addToWishlist.php',
+        type: 'POST',
+        cache: false,
+        data: { 'productId': productId },
+        dataType: 'html',
+        beforeSend: function(){
+            $("#loginBtn").prop("disabled", true);
+        },
+
+        success: function(data){
+                if (data == "Added") {
+                    $("#wishlistHeart"+productId).addClass( "red" );
+                    $("#wishlistHeart"+productId).addClass( "fa" );
+                    $("#wishlistHeart"+productId).removeClass( "far" );
+
+                }else{
+                    $("#wishlistHeart"+productId).removeClass( "red" );
+                    $("#wishlistHeart"+productId).addClass( "far" );
+                    $("#wishlistHeart"+productId).removeClass( "fa" );
+                }
+                $("#loginBtn").prop("disabled", false);
+        }
+    })
+}
