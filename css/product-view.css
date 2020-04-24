@@ -22,6 +22,7 @@
 	height: 70px;
 	border: 1px solid rgba(0,0,0,.2);
 	border-radius: 3px;
+	cursor: pointer;
 }
 .user-name{
 	padding: 5px 0 !important;
