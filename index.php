@@ -46,7 +46,6 @@ while ($row = $wishlist->fetch_array(MYSQLI_ASSOC)) {
 <?php include 'details/scripts.php';
 ?>
 
-<script src="js/mymain.js"></script>
 <script>
 $('a.wish').click(function() {
 	return false;
