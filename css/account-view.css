@@ -1,0 +1,21 @@
+.profile-photo{
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 1px solid green;
+}
+.profile-photo:before{
+	content: '';
+	position: absolute;
+	width: 128.5px;
+	height: 128.5px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+}
+.profile-num h6{
+	background: #E5F3EA;
+}
+.profile-num p{
+	font-size: .8em;
+}

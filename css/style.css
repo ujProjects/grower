@@ -78,6 +78,8 @@
 	min-width: 30px;
 	max-height: 30px;
 	border-radius: 50%;
+	border: 1px solid green;
+	overflow: hidden;
 }
 #search{
 	width: 96.5%;
@@ -105,7 +107,7 @@
 	max-width: 100%;
 	max-height: 100%;
 }
-.product-img i{
+.wish{
 	position: absolute;
 	right: 4%;
 	top: 6%;
