@@ -321,7 +321,7 @@
 	</div>
 
 
-
+	
 	<script src="js/jquery.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -329,6 +329,12 @@
 			$('.product-imgs img').mouseover(function(e){
 				e.preventDefault();
 				$('.product-main-img img').attr('src', $(this).attr('src'));
+			})
+		});
+		$(document).ready(function(){
+			$('.product-imgs').mouseover(function(e){
+				$('.product-imgs').removeClass('img-border');
+				$(this).addClass('img-border');
 			})
 		});$(".also-product").on('click', function () {
 			let link = $(this).attr('href')
