@@ -8,8 +8,24 @@ $productId = $_GET['id'];
 if (!$productId) {
     echo "<script>location.href='http://grower.uz/'</script>";
 }else {
-    $productSelecter = "SELECT * from products where id = ".$productId;
+    $productSelecter = "SELECT p.id AS id, p.title AS title, p.description AS description, p.category_id, p.`view` AS views, p.thumbnail, c.title AS cateogry_title, c.icon, pr.currentPrice, pr.oldPrice, u.username, u.id AS userId, p.premieum_status FROM products AS p
+    LEFT JOIN categories AS c ON p.category_id=c.id
+    LEFT JOIN prices AS pr ON pr.product_id = p.id
+    /*LEFT JOIN images AS img ON img.product_id = p.id*/ /* Full details*/
+    LEFT JOIN users AS u ON u.id = p.sellerId
+    LEFT JOIN availabletypes AS t ON t.product_id = p.id
+    LEFT JOIN premieumstatus AS ps ON ps.id = p.premieum_status
+    where p.id = ".$productId;
     $product = fetchQuery($productSelecter);
+
+
+    $imagesSelector = "SELECT * from images where product_id =".$productId." order by image_order_number desc";
+    $images = query($imagesSelector);
+
+
+    $userInfoSelecter = "SELECT * from users where id = ".$product['userId'];
+    $user = fetchQuery($userInfoSelecter);
+
 }
  ?>
 	<link rel="stylesheet" href="css/product-view.css">
@@ -23,51 +39,42 @@ if (!$productId) {
 
 <!-- LOAD-PAGE -->
 			<section class="px-5 pt-4 pb-5">
-				<h3 class="font-weight-bold mt-3">Product Name</h3>
+				<h3 class="font-weight-bold mt-3"><?=$product['title']?></h3>
 				<form class="row">
 					<div class="col-lg-6">
 						<div class="mt-3 mb-4 product-main-img d-flex justify-content-center pl-0 align-items-center">
-							<img src="https://food-images.files.bbci.co.uk/food/recipes/classic_carrot_cake_08513_16x9.jpg" alt="">
+							<img src="images/products/<?=$product['thumbnail']?>" alt="">
 						</div>
 						<div class="row m-0 justify-content-between">
 							<div class="col-2 p-0">
 								<div class="product-imgs d-flex justify-content-center align-items-center">
-									<img src="https://food-images.files.bbci.co.uk/food/recipes/classic_carrot_cake_08513_16x9.jpg" alt="">
+                                    <img src="images/products/<?=$product['thumbnail']?>" alt="">
 								</div>
-							</div>
+                            </div>
+                            <?php while($img = $images->fetch_array()): ?>
 							<div class="col-2 p-0">
 								<div class="product-imgs d-flex justify-content-center align-items-center">
-									<img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F4_3_horizontal_-_1200x900%2Fpublic%2F1542062283%2Fchocolate-and-cream-layer-cake-1812-cover.jpg%3Fitok%3DR_xDiShk" alt="">
+                                    <img src="images/products/<?=$img['imageUrl']?>" alt="">
 								</div>
 							</div>
-							<div class="col-2 p-0">
-								<div class="product-imgs d-flex justify-content-center align-items-center">
-									<img src="https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/carrot-cake.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-2 p-0">
-								<div class="product-imgs d-flex justify-content-center align-items-center">
-									<img src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg" alt="">
-								</div>
-							</div>
-							<div class="col-2 p-0 mb-sm-5">
-								<div class="product-imgs d-flex justify-content-center align-items-center">
-									<img src="https://img.taste.com.au/-RGbsS2h/taste/2019/05/chocolate-and-nutella-smores-cake-149475-2.jpg" class="w-100" alt="">
-								</div>
-							</div>
+                            <?endwhile; ?>
 						</div>
 					</div>
 					<div class="col-lg-6 pl-lg-5 pr-0">
 						<div class="pt-3">
-							<h3 class="col-12 text-center py-2 product-price">$<span>99.5</span></h3>
+							<h3 class="col-12 text-center py-2 product-price">$<span><?=$product['currentPrice']?></span></h3>
 							<div class="d-flex">
 								<div class="col-6 pl-0 pr-1">
 									<h6>
-										<a href="" class="d-flex align-items-center user-name product-price">
+										<a href="users?id=<?=$product['userId']?>" class="d-flex align-items-center user-name product-price">
 											<div class="user ml-1 mr-3">
-												<img src="https://asdorural.com/upload/iblock/160/1604ed7b020dfd7c616e0383e0bab2c8.png" class="w-100" alt="">
+                                                <?php if ($user['logo'] != ""): ?>
+                                                <img  src="images/avatars/<?=$user['logo']?>" class="w-100 mb-2 circle" alt="">
+                                            <?php else:?>
+                                                <img src="images/avatars/default.jpg" class="w-100 mb-2 circle" alt="">
+                                            <?php endif;?>
 											</div>
-											<span class="text-dark">Roy Jons</span>
+											<span class="text-dark"><?=$product['username']?></span>
 										</a>
 									</h6>
 								</div>
@@ -76,153 +83,57 @@ if (!$productId) {
 								</div>
 							</div>
 							<h5 class="mt-3 mb-2 font-weight-bold">Description</h5>
-							<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, fugiat blanditiis quisquam fuga debitis, officia nam consequatur voluptatibus quod sequi excepturi nisi amet nobis eveniet veritatis aliquam, praesentium culpa voluptas optio necessitatibus a explicabo! Voluptates, explicabo amet sequi atque molestias ipsa cupiditate fugiat. Iure dolorem, tempora in ea. Quis maxime commodi sunt mollitia, quasi iure vero ab saepe unde assumenda, voluptas quibusdam error omnis sapiente obcaecati laudantium ratione suscipit laborum provident ipsum perferendis at. Suscipit at est doloribus dolorem magnam, esse! Tempora aliquam soluta necessitatibus veritatis. Dolor, laboriosam vel sequi illum dolorem nihil totam minima placeat facere, ipsum itaque beatae!</p>
+							<p class="text-justify"><?=$product['description'] ?></p>
 						</div>
 					</div>
 				</form>
 			</section>
 
 <!-- ALSO LIKE -->
+
+
+<?php
+$randomSelector = "SELECT p.id AS id, p.title AS title, p.thumbnail,u.logo, c.title AS cateogry_title, pr.currentPrice, u.username, u.id AS userId, p.premieum_status FROM products AS p
+LEFT JOIN prices AS pr ON pr.product_id = p.id
+LEFT JOIN categories As c on p.category_id=c.id
+LEFT JOIN users AS u ON u.id = p.sellerId
+LEFT JOIN premieumstatus AS ps ON ps.id = p.premieum_status
+ORDER BY RAND()
+LIMIT 2";
+
+
+
+$products = query($randomSelector);
+
+ ?>
 			<section class="also-like pb-5 ml-4">
 				<h4 class="font-weight-bold ml-3 mb-4">You might also like</h4>
 				<div class="container-fluid">
 					<div class="row">
+                        <?php while ($randProduct = $products->fetch_array()): ?>
 						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
+							<div href="product.php?id=<?=$randProduct[id] ?>" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
 								<div class="d-flex pl-3 border-bottom py-1">
 									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
+                                        <?php if ($randProduct['logo'] != ""): ?>
+                                            <img src="images/avatars/<?=$randProduct['logo']?>" class="w-100 mb-2" alt="">
+
+                                        <?php else: ?>
+                                        <img src="images/avatars/default.jpg" class="w-100 mb-2" alt="">
+                                        <?php endif; ?>
 									</div>
-									<span>Roy Jons</span>
+									<span><?=$randProduct['title'] ?></span>
 								</div>
 								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
+									<img src="images/products/<?=$randProduct['thumbnail']?>" alt="" class="w-100">
 								</div>
 								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
+									<h6 class="font-weight-bold">$<?=number_format($randProduct['currentPrice'])?></h6>
+									<p class="text-muted m-0"><?=$randProduct['title'] ?></p>
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-4 col-6">
-							<div href="" class="also-product mt-2 pt-1 mb-3 pb-2 bg-white">
-								<div class="d-flex pl-3 border-bottom py-1">
-									<div class="user ml-1 mr-3">
-										<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
-									</div>
-									<span>Roy Jons</span>
-								</div>
-								<div class="also-product-img border-bottom mb-3 d-flex align-items-center">
-									<img src="https://cdn.lynda.com/course/713378/713378-637199728618542346-16x9.jpg" alt="" class="w-100">
-								</div>
-								<div class="also-product-info px-3">
-									<h6 class="font-weight-bold">Product Name</h6>
-									<p class="text-muted m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis delectus</p>
-								</div>
-							</div>
-						</div>
+                    <?php endwhile; ?>
 					</div>
 				</div>
 			</section>
@@ -230,34 +141,23 @@ if (!$productId) {
 	</div>
 
 
-<!-- Responsive Search -->
-	<div class="resp-search d-flex align-items-center">
-		<input type="text" placeholder="Search...">
-		<div class="ssearch"><i class="fas fa-search text-muted"></i></div>
-	</div>
+<?php include 'details/mobile.php'; ?>
 
-<!-- MENU - PANEL -->
-	<div class="menu-panel bg-white border-top d-none">
-		<ul class="d-flex justify-content-between py-2 m-0 px-4">
-			<li><a href=""><i class="icofont-home text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-list text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-plus text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-heart text-dark"></i></a></li>
-			<li><a href=""><i class="icofont-user text-dark"></i></a></li>
-		</ul>
-	</div>
-
-<!-- Modal -->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="exampleModalCenterTitle">
-	        	<a href="" class="d-flex align-items-center">
-					<div class="user ml-1 mr-3">
-						<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
+	        	<a href="user?id=<?=$product['id']?>" class="d-flex align-items-center">
+					<div class="user ml-1 mr-3 ">
+                        <?php if ($user['logo'] != ""): ?>
+						<img src="images/avatars/<?=$user['logo']?>" class="w-100 mb-2 circle" alt="">
+                    <?php else:?>
+                        <img src="images/avatars/default.jpg" class="w-100 mb-2 circle" alt="">
+                    <?php endif;?>
+
 					</div>
-					<span class="text-dark">Roy Jons</span>
+					<span class="text-dark"><b><?= $user['username']?></b>  (<?=$user['full_name']?>)</span>
 				</a>
 	        </h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -265,8 +165,13 @@ if (!$productId) {
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	      	<a href="" class="user-contact d-block mb-3"><i class="fas fa-phone-alt text-success mr-2"></i><span class="text-dark">+998 90 999 99 99</span></a>
-	      	<a href="" class="user-contact d-block mt-3"><i class="fas fa-envelope text-success mr-2"></i><span class="text-dark">-</span></a>
+              <?php if ($user['phone_number'] != ""): ?>
+
+	      	<a href="tel: <?=$user['phone_number']?>" class="user-contact d-block mb-3"><i class="fas fa-phone-alt text-success mr-2"></i><span class="text-dark"><?= $user['phone_number']?></span></a>
+        <?php endif; ?>
+        <?php if ($user['email'] != ""): ?>
+	      	<a href="mailto: <?= $user['email']?>" class="user-contact d-block mt-3"><i class="fas fa-envelope text-success mr-2"></i><span class="text-dark"><?= $user['email']?></span></a>
+        <?php endif; ?>
 	      </div>
 	    </div>
 	  </div>

@@ -9,44 +9,49 @@ if($res['type'] != "success"){
 }else {
     $thumbnail = $res['target'];
 }
-// if (isset($_FILES['img1'])) {
-//     $res = validate_img($_FILES['img1']);
-//     if($res['type'] != "success"){
-//         echo $res['message'];
-//         echo "Img 1 didn't uploaded";
-//     }else {
-//         $img1 = $res['target'];
-//     }
-// }
-// if (isset($_FILES['img2'])) {
-//     $res = validate_img($_FILES['img2']);
-//     if($res['type'] != "success"){
-//         echo $res['message'];
-//         echo "Img 2 didn't uploaded";
-//     }else {
-//         $img2 = $res['target'];
-//     }
-// }
-// if (isset($_FILES['img3'])) {
-//
-//     $res = validate_img($_FILES['img3']);
-//     if($res['type'] != "success"){
-//         echo $res['message'];
-//         echo "Img 3 didn't uploaded";
-//     }else {
-//         $img3 = $res['target'];
-//     }
-// }
-// if (isset($_FILES['img4'])) {
-//     $res = validate_img($_FILES['img4']);
-//     if($res['type'] != "success"){
-//         echo $res['message'];
-//         echo "Img 4 didn't uploaded";
-//     }else {
-//         $img4 = $res['target'];
-//     }
-// }
-// print_r($_FILES);
+
+
+
+
+if ($_FILES['img1']['name'] !== "") {
+    $res = validate_img($_FILES['img1']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 1 didn't uploaded";
+    }else {
+        $img[] = $res['target'];
+    }
+}
+if ($_FILES['img2']['name'] !== "") {
+    $res = validate_img($_FILES['img2']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 2 didn't uploaded";
+    }else {
+        $img[] = $res['target'];
+    }
+}
+if ($_FILES['img3']['name'] !== "") {
+
+    $res = validate_img($_FILES['img3']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 3 didn't uploaded";
+    }else {
+        $img[] = $res['target'];
+    }
+}
+if ($_FILES['img4']['name'] !== "") {
+    $res = validate_img($_FILES['img4']);
+    if($res['type'] != "success"){
+        echo $res['message'];
+        echo "Img 4 didn't uploaded";
+    }else {
+        $img[] = $res['target'];
+    }
+}
+
+// print_r($img);
 // print_r($_POST);
 
 $title = htmlspecialchars($_POST['title'], ENT_QUOTES );
@@ -92,6 +97,17 @@ if ($resProduct == true) {
 
 $addPricesSql = "INSERT INTO prices(product_id, currentPrice) VALUES($product_id, $price)";
 $resPrice = $dbuser->query($addPricesSql);
+
+$img1 = validate_img($_FILES['thumbnail']);
+
+if (sizeof($img) !== 0 ) {
+    $i = 1;
+    foreach ($img as $value) {
+        $imgInserter = "INSERT Into images (imageUrl, product_id, image_order_number) VALUES('".$value."', $product_id, $i)";
+        query($imgInserter);
+        $i++;
+    }
+}
 
 
 if ($resProduct and $resPrice) {
