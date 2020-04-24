@@ -39,4 +39,29 @@ function productMaker($product){
     </div>
 <?php
 }
+
+
+
+
+
+
+function SectionMaker($title, $products){
+
 ?>
+
+
+
+<section class="home-page pt-4 ml-4">
+	<h4 class="font-weight-bold ml-3 mb-4"><?=$title?></h4>
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Product  -->
+			<?php while ($product = $products->fetch_array()){
+				productMaker($product);
+		}; ?>
+		</div>
+	</div>
+</section>
+<?php
+
+} ?>
