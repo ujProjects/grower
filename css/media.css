@@ -31,4 +31,13 @@
 	.logo{
 		display: flex !important;
 	}
+	.username{
+		display: none !important;
+	}
+	.views{
+		margin-top: 20px;
+	}
+	.bio-desktop button{
+		display: inline-block !important;
+	}
 }
