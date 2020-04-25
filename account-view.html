@@ -68,7 +68,7 @@
 <!-- LOGO -->
 			<div class="logo mt-4 d-none">
 				<h3 class="col-4 pt-1 col-md-5"><a href="" class="font-weight-bold text-success ml-4">Logo</a></h3>
-				<h4 class="col-4 px-sm-3 pt-2 font-weight-light px-0">emmawatson</h4>
+				<h4 class="col-4 px-sm-3 pt-2 font-weight-light d-flex align-items-center px-0">emmawatson<i class="edit ml-1 mt-1 fas fa-ellipsis-h" data-toggle="modal" data-target="#edit"></i></h4>
 			</div>
 
 <!-- ACCOUNT - VIEW -->
@@ -82,8 +82,8 @@
 					<div class="col-9 col-md-9 pr-0 col-xl-7">
 						<div class="profile-static">
 							<div class="username d-flex justify-content-between">
-								<h3 class="font-weight-light col-8 pl-0 m-0">emmawatson</h3>
-								<button type="button" class="btn btn-success py-1 col-4" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
+								<h3 class="font-weight-light d-flex align-items-center col-8 pl-0 m-0">emmawatson<i class="edit mt-1 ml-2 fas fa-ellipsis-h" data-toggle="modal" data-target="#edit"></i></h3>
+								<button class="btn btn-success py-1 col-4" data-toggle="modal" data-target="#exampleModalCenter">Contact</button>
 							</div>
 							<div class="views d-flex pt-2 pb-4">
 								<div class="col-4 pl-0 text-center">
@@ -246,7 +246,7 @@
 		</ul>
 	</div>
 
-<!-- Modal -->
+<!-- Modal - Contact -->
 	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
@@ -266,6 +266,34 @@
 	      <div class="modal-body">
 	      	<a href="" class="user-contact d-block mb-3"><i class="fas fa-phone-alt text-success mr-2"></i><span class="text-dark">+998 90 999 99 99</span></a>
 	      	<a href="" class="user-contact d-block mt-3"><i class="fas fa-envelope text-success mr-2"></i><span class="text-dark">-</span></a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<!-- Modal - Edit -->
+	<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitle">
+	        	<a href="" class="d-flex align-items-center">
+					<div class="user ml-1 mr-3">
+						<img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="w-100 mb-2" alt="">
+					</div>
+					<span class="text-dark">Roy Jons</span>
+				</a>
+	        </h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<h5>Username</h5>
+	      	<input type="text" class="form-control">
+	      </div>
+	      <div class="modal-footer py-1">
+	        <button type="button" class="py-1 btn btn-success" data-dismiss="modal">Save</button>
 	      </div>
 	    </div>
 	  </div>

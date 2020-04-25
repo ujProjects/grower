@@ -1,6 +1,6 @@
 .profile-photo{
-	width: 125px;
-	height: 125px;
+	width: 145px;
+	height: 145px;
 	border-radius: 50%;
 	border: 2px solid green;
 	overflow: hidden;
@@ -10,10 +10,14 @@
 	position: absolute;
 	top: 2px;
 	left: 2px;
-	width: 121px;
-	height: 121px;
+	width: 141px;
+	height: 141px;
 	border-radius: 50%;
 	border: 1px solid #fff;
+}
+.edit{
+	font-size: .7em;
+	cursor: pointer;
 }
 .views div h6{
 	background: #E5F3EA;
@@ -37,7 +41,7 @@
 	font-size: .8em;
 }
 
-@media screen and (max-width: 1070px){
+@media screen and (max-width: 1250px){
 	.profile-photo{
 		width: 120px;
 		height: 120px;
